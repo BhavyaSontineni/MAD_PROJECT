@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
- import 'database_helper.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'database_helper.dart';
  
  class SignUpPage extends StatelessWidget {
    final TextEditingController _firstNameController = TextEditingController();
@@ -16,7 +17,9 @@ import 'package:flutter/material.dart';
    Widget build(BuildContext context) {
      return Scaffold(
        appBar: AppBar(
-         title: Text('Recipe Nest'),
+         title: Text('Recipe and meal planning app'),
+         centerTitle: true,
+         backgroundColor: Color(0xFFAF7AC5),
        ),
        body: Padding(
          padding: EdgeInsets.all(16.0),
@@ -83,17 +86,27 @@ import 'package:flutter/material.dart';
                      );
                      return;
                    }
- 
-                   // Insert user into database
-                   Map<String, dynamic> user = {
-                     'first_name': _firstNameController.text,
-                     'last_name': _lastNameController.text,
-                     'email': _emailController.text,
-                     'user_id': _userIdController.text,
-                     'password': _passwordController.text,
-                   };
- 
-                   await dbHelper.insertUser(user);
+                   // Platform-specific storage
+                   if (Theme.of(context).platform == TargetPlatform.android ||
+                       Theme.of(context).platform == TargetPlatform.iOS) {
+                     // Mobile: Insert user into database
+                     Map<String, dynamic> user = {
+                       'first_name': _firstNameController.text,
+                       'last_name': _lastNameController.text,
+                       'email': _emailController.text,
+                       'user_id': _userIdController.text,
+                       'password': _passwordController.text,
+                     };
+                     await dbHelper.insertUser(user);
+                   } else {
+                     // Web: Store user credentials in SharedPreferences
+                     SharedPreferences prefs =
+                         await SharedPreferences.getInstance();
+                     await prefs.setString(
+                         _userIdController.text, _passwordController.text);
+                     // Optionally, store other user data as needed
+                   }
+                   
  
                    ScaffoldMessenger.of(context).showSnackBar(
                      SnackBar(content: Text('User registered successfully!')),

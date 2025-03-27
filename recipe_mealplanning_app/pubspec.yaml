@@ -31,6 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   sqflite: ^2.0.3+1
+  shared_preferences: ^2.0.11
   path: ^1.8.3
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -39,9 +40,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  sqflite: ^2.0.3+1
-  path: ^1.8.3
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -60,6 +58,31 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - assets/applepie.jpeg
+    - assets/avocadotoast.jpeg
+    - assets/beafsteak.jpeg
+    - assets/Bruschetta.jpeg
+    - assets/caesarsalad.jpeg
+    - assets/chicken noodles soup.jpeg
+    - assets/chocolatecake.jpeg
+    - assets/cobbsalad.jpeg
+    - assets/eggbenedict.jpeg
+    - assets/fishtaco.jpeg
+    - assets/greeksalad.jpeg
+    - assets/grilled salmon.jpeg
+    - assets/grilledchicken.jpeg
+    - assets/icecreamsundae.jpeg
+    - assets/icedcoffe.jpeg
+    - assets/Minestrone.jpeg
+    - assets/mojito.jpeg
+    - assets/nachos.jpeg
+    - assets/pancakes.jpeg
+    - assets/pinacolado.jpeg
+    - assets/porkchop.jpeg
+    - assets/shrimpscampi.jpeg
+    - assets/springrolls.jpeg
+    - assets/tomato soup.jpeg
 
   # To add assets to your application, add an assets section, like this:
   # assets:
