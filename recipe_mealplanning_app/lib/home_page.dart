@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
- import 'recipe_category_screen.dart';
- import 'profile_page.dart';
- 
+import 'recipe_category_screen.dart';
+import 'profile_page.dart';
+import 'meal_planning_screen.dart'; // Import the new meal planning screen
+import 'grocery_list_screen.dart'; // Import the new grocery list screen
  class HomePage extends StatefulWidget {
    final String userId;
  
@@ -26,12 +27,12 @@ import 'package:flutter/material.dart';
        RecipeCategoryScreen(
          userId: widget.userId,
        ), // Passing userId to RecipeCategoryScreen
-       Center(
-         child: Text('Meal Planning', style: TextStyle(fontSize: 24)),
-       ),
-       Center(
-         child: Text('Grocery List', style: TextStyle(fontSize: 24)),
-       ),
+      MealPlanningScreen(
+         userId: widget.userId,
+       ), // Add Meal Planning Screen
+       GroceryListScreen(
+         userId: widget.userId,
+       ), // Add Grocery List Screen 
      ];
    }
  
