@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marquee/marquee.dart';
 import 'recipe_category_screen.dart';
 import 'profile_page.dart';
 import 'meal_planning_screen.dart'; // Import the new meal planning screen
@@ -14,6 +15,12 @@ import 'grocery_list_screen.dart'; // Import the new grocery list screen
  
  class _HomePageState extends State<HomePage> {
    int _selectedIndex = 0;
+   final List<String> messages = [
+     "Welcome to Meal Planning and Recipe Discovery!",
+     "Find Your Next Food Obsession!",
+     "Get Ready for Yummy Surprises!",
+     "Let Your Taste Buds Go Wild!",
+   ];
  
    late List<Widget> _pages;
  
@@ -21,8 +28,48 @@ import 'grocery_list_screen.dart'; // Import the new grocery list screen
    void initState() {
      super.initState();
      _pages = [
-       Center(
-         child: Text("Today's meal plan", style: TextStyle(fontSize: 24)),
+       Column(
+         mainAxisAlignment: MainAxisAlignment.center, // Center the content vertically
+         children: [
+           Container(
+             height: 50, // Height of the marquee container
+             color: Color(0xFFAF7AC5), // Background color of the marquee
+             child: Marquee(
+               text: messages.join('   |   '), // Join messages for scrolling
+               style: TextStyle(
+                 fontSize: 18,
+                 color: Colors.white,
+                 fontWeight: FontWeight.bold, 
+               ),
+               scrollAxis: Axis.horizontal,
+               crossAxisAlignment: CrossAxisAlignment.start,
+               blankSpace: 20.0,
+               velocity: 50.0,
+               startPadding: 10.0,
+               accelerationDuration: Duration(seconds: 1),
+               accelerationCurve: Curves.linear,
+               decelerationDuration: Duration(milliseconds: 500),
+               decelerationCurve: Curves.easeOut,
+             ),
+           ),
+           SizedBox(height: 20), 
+           Expanded(
+             child: PageView(
+               children: [
+                 Center(child: Text("Explore Your Home", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
+                 Center(child: Text("Cook with the Best Recipes", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
+                 Center(child: Text("Plan Your Meals with Ease", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
+                 Center(child: Text("Manage Your Grocery List Smartly", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
+               ],
+               // Allow users to swipe through messages
+               onPageChanged: (index) {
+                 setState(() {
+                   _selectedIndex = index;
+                 });
+               },
+             ),
+           ),
+         ],
        ),
        RecipeCategoryScreen(
          userId: widget.userId,
