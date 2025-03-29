@@ -41,6 +41,15 @@ import 'home_page.dart';
                onPressed: () async {
                  String userId = _userIdController.text;
                  String password = _passwordController.text;
+
+                 // Ensure both fields are not empty
+                 if (userId.isEmpty || password.isEmpty) {
+                   ScaffoldMessenger.of(context).showSnackBar(
+                     SnackBar(
+                         content: Text('User ID and Password are required!')),
+                   );
+                   return; // Stop further execution
+                 }
                 // Platform-specific login logic
                  if (Theme.of(context).platform == TargetPlatform.android ||
                      Theme.of(context).platform == TargetPlatform.iOS) {
