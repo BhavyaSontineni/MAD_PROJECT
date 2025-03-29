@@ -84,6 +84,9 @@ flutter:
     - assets/shrimpscampi.jpeg
     - assets/springrolls.jpeg
     - assets/tomato soup.jpeg
+    - assets/chicken%2520noodles%2520soup.jpeg
+    - assets/grilled%2520salmon.jpeg
+    - assets/tomato%2520soup.jpeg
 
   # To add assets to your application, add an assets section, like this:
   # assets:
