@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
      return Scaffold(
        appBar: AppBar(
          title: const Text('Favorite Recipes'),
+         backgroundColor: const Color(0xFFAF7AC5),
        ),
        body: favorites.isEmpty
            ? Center(
