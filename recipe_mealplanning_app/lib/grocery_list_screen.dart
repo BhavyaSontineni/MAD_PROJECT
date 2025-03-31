@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
  class GroceryListScreen extends StatefulWidget {
    final String userId;
  
-   GroceryListScreen({required this.userId});
+   const GroceryListScreen({super.key, required this.userId});
  
    @override
    _GroceryListScreenState createState() => _GroceryListScreenState();
@@ -11,15 +11,21 @@ import 'package:flutter/material.dart';
  
  class _GroceryListScreenState extends State<GroceryListScreen> {
   
-   List<String> _groceries = ['Apples', 'Bananas', 'Tomatoes', 'Chicken', 'Milk'];
-   TextEditingController _groceryController = TextEditingController();
+   final List<String> _groceries = [
+     'Apples',
+     'Bananas',
+     'Tomatoes',
+     'Chicken',
+     'Milk'
+   ];
+   final TextEditingController _groceryController = TextEditingController();
  
    @override
    Widget build(BuildContext context) {
      return Scaffold(
        appBar: AppBar(
-         title: Text('Grocery List'),
-         backgroundColor: Color(0xFFAF7AC5),
+         title: const Text('Grocery List'),
+         backgroundColor: const Color(0xFFAF7AC5),
        ),
        body: Column(
          children: [
@@ -30,13 +36,13 @@ import 'package:flutter/material.dart';
                  Expanded(
                    child: TextField(
                      controller: _groceryController,
-                     decoration: InputDecoration(
+                     decoration: const InputDecoration(
                        hintText: 'Add a new item',
                      ),
                    ),
                  ),
                  IconButton(
-                   icon: Icon(Icons.add),
+                   icon: const Icon(Icons.add),
                    onPressed: () {
                      setState(() {
                        _groceries.add(_groceryController.text);
@@ -54,7 +60,7 @@ import 'package:flutter/material.dart';
                  return ListTile(
                    title: Text(_groceries[index]),
                    trailing: IconButton(
-                     icon: Icon(Icons.delete),
+                     icon: const Icon(Icons.delete),
                      onPressed: () {
                        setState(() {
                          _groceries.removeAt(index);

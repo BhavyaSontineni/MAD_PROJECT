@@ -6,37 +6,39 @@ import 'home_page.dart';
    final TextEditingController _userIdController = TextEditingController();
    final TextEditingController _passwordController = TextEditingController();
    final DatabaseHelper dbHelper = DatabaseHelper();
+
+   LoginPage({super.key});
  
    @override
    Widget build(BuildContext context) {
      return Scaffold(
        appBar: AppBar(
-         title: Text('Recipe and meal planning app'),
+         title: const Text('Recipe and meal planning app'),
          centerTitle: true,
-         backgroundColor: Color(0xFFAF7AC5),
+         backgroundColor: const Color(0xFFAF7AC5),
        ),
        body: Padding(
-         padding: EdgeInsets.all(16.0),
+         padding: const EdgeInsets.all(16.0),
          child: Column(
            mainAxisAlignment: MainAxisAlignment.center,
            children: [
              TextField(
                controller: _userIdController,
-               decoration: InputDecoration(
+               decoration: const InputDecoration(
                  labelText: 'User ID',
                  border: OutlineInputBorder(),
                ),
              ),
-             SizedBox(height: 16),
+             const SizedBox(height: 16),
              TextField(
                controller: _passwordController,
                obscureText: true,
-               decoration: InputDecoration(
+               decoration: const InputDecoration(
                  labelText: 'Password',
                  border: OutlineInputBorder(),
                ),
              ),
-             SizedBox(height: 16),
+             const SizedBox(height: 16),
              ElevatedButton(
                onPressed: () async {
                  String userId = _userIdController.text;
@@ -45,7 +47,7 @@ import 'home_page.dart';
                  // Ensure both fields are not empty
                  if (userId.isEmpty || password.isEmpty) {
                    ScaffoldMessenger.of(context).showSnackBar(
-                     SnackBar(
+                     const SnackBar(
                          content: Text('User ID and Password are required!')),
                    );
                    return; // Stop further execution
@@ -57,7 +59,7 @@ import 'home_page.dart';
                    var user = await dbHelper.getUser(userId, password);
                    if (user != null) {
                      ScaffoldMessenger.of(context).showSnackBar(
-                       SnackBar(content: Text('Login Successful!')),
+                       const SnackBar(content: Text('Login Successful!')),
                      );
                      Navigator.pushReplacement(
                        context,
@@ -68,7 +70,7 @@ import 'home_page.dart';
                  
                  } else {
                   ScaffoldMessenger.of(context).showSnackBar(
-                       SnackBar(content: Text('Invalid User ID or Password!')),
+                       const SnackBar(content: Text('Invalid User ID or Password!')),
                      );
                    }
                    } else {
@@ -78,7 +80,7 @@ import 'home_page.dart';
                    String storedPassword = prefs.getString(userId) ?? '';
                    if (storedPassword == password) {
                      ScaffoldMessenger.of(context).showSnackBar(
-                       SnackBar(content: Text('Login Successful!')),
+                       const SnackBar(content: Text('Login Successful!')),
                      );
                      Navigator.pushReplacement(
                        context,
@@ -88,20 +90,20 @@ import 'home_page.dart';
                      );
                    } else {
                      ScaffoldMessenger.of(context).showSnackBar(
-                       SnackBar(content: Text('Invalid User ID or Password!')),
+                       const SnackBar(content: Text('Invalid User ID or Password!')),
                      );
                    }
                  }
                },
-               child: Text('Login'),
+               child: const Text('Login'),
              ),
-             SizedBox(height: 8),
+             const SizedBox(height: 8),
              ElevatedButton(
                onPressed: () {
                  Navigator.pushNamed(
                      context, '/signup'); // Navigate to signup page
                },
-               child: Text('Sign Up'),
+               child: const Text('Sign Up'),
              ),
            ],
          ),

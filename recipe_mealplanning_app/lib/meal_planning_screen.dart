@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
  class MealPlanningScreen extends StatefulWidget {
    final String userId;
  
-   MealPlanningScreen({required this.userId});
+   const MealPlanningScreen({required this.userId});
  
    @override
    _MealPlanningScreenState createState() => _MealPlanningScreenState();
@@ -11,15 +11,23 @@ import 'package:flutter/material.dart';
  
  class _MealPlanningScreenState extends State<MealPlanningScreen> {
   
-   List<String> _daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-   Map<String, String> _selectedMeals = {};
+   final List<String> _daysOfWeek = [
+     'Monday',
+     'Tuesday',
+     'Wednesday',
+     'Thursday',
+     'Friday',
+     'Saturday',
+     'Sunday'
+   ];
+   final Map<String, String> _selectedMeals = {};
  
    @override
    Widget build(BuildContext context) {
      return Scaffold(
        appBar: AppBar(
-         title: Text('Meal Planning'),
-         backgroundColor: Color(0xFFAF7AC5),
+         title: const Text('Meal Planning'),
+         backgroundColor: const Color(0xFFAF7AC5),
        ),
        body: ListView.builder(
          itemCount: _daysOfWeek.length,
@@ -28,7 +36,7 @@ import 'package:flutter/material.dart';
            return ListTile(
              title: Text(day),
              subtitle: Text(_selectedMeals[day] ?? 'No meal selected'),
-             trailing: Icon(Icons.edit),
+             trailing: const Icon(Icons.edit),
              onTap: () async {
                String? selectedMeal = await _selectMeal(context, day);
                if (selectedMeal != null) {

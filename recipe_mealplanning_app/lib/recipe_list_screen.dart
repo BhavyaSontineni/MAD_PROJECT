@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'recipe_detail_screen.dart';
+import 'favorite_recipe_screen.dart';
 
 class RecipeListScreen extends StatefulWidget {
   final String userId;
@@ -502,39 +503,50 @@ class _RecipeListScreenState extends State<RecipeListScreen> {
       },
     ],
   };
- 
-   @override
-   Widget build(BuildContext context) {
-    // Filter recipes based on selected dietary option for the selected category
-     List<Map<String, dynamic>> filteredRecipes = recipes[widget.category] ?? [];
-     
-     // Further filter by dietary option
-     filteredRecipes = filteredRecipes.where((recipe) {
-       if (selectedDietaryOption == 'All') return true; // Show all recipes
-       return recipe['dietaryType'] == selectedDietaryOption; // Filter by dietary type
-     }).toList();
-     return Scaffold(
-       appBar: AppBar(
-        title: Text('Recipes - ${widget.category}'), // Display selected category
-         actions: [
-           DropdownButton<String>(
-             value: selectedDietaryOption,
-             icon: Icon(Icons.filter_list),
-             items: dietaryOptions.map<DropdownMenuItem<String>>((String value) {
-               return DropdownMenuItem<String>(
-                 value: value,
-                 child: Text(value),
-               );
-             }).toList(),
-             onChanged: (String? newValue) {
-               setState(() {
-                 selectedDietaryOption = newValue!;
-               });
-             },
-           ),
-         ],
-       ),
-       body: ListView.builder(
+
+  @override
+  Widget build(BuildContext context) {
+    List<Map<String, dynamic>> filteredRecipes = recipes[widget.category] ?? [];
+    filteredRecipes = filteredRecipes.where((recipe) {
+      if (selectedDietaryOption == 'All') return true;
+      return recipe['dietaryType'] == selectedDietaryOption;
+    }).toList();
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Recipes - ${widget.category}'),
+        backgroundColor: const Color(0xFFAF7AC5),
+        actions: [
+          DropdownButton<String>(
+            value: selectedDietaryOption,
+            icon: const Icon(Icons.filter_list),
+            items: dietaryOptions.map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+            onChanged: (String? newValue) {
+              setState(() {
+                selectedDietaryOption = newValue!;
+              });
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.favorite),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => 
+                      FavoriteRecipesScreen(favorites: favorites),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+      body: ListView.builder(
          itemCount: filteredRecipes.length,
          itemBuilder: (context, index) {
            final recipe = filteredRecipes[index];
@@ -542,7 +554,24 @@ class _RecipeListScreenState extends State<RecipeListScreen> {
              child: ListTile(
                leading: Image.asset(recipe['image']),
                title: Text(recipe['name']),
-               subtitle: Text('${recipe['calories']} calories - ${recipe['prepTime']}'),
+               subtitle: Text(
+                   '${recipe['calories']} calories - ${recipe['prepTime']}'),
+               trailing: IconButton(
+                 icon: Icon(
+                   recipe['isFavorite'] ? Icons.favorite : Icons.favorite_border,
+                   color: recipe['isFavorite'] ? Colors.red : null,
+                 ),
+                 onPressed: () {
+                   setState(() {
+                     recipe['isFavorite'] = !recipe['isFavorite'];
+                     if (recipe['isFavorite']) {
+                       favorites.add(recipe);
+                     } else {
+                       favorites.remove(recipe);
+                     }
+                   });
+                 },
+               ),
                onTap: () {
                  Navigator.push(
                    context,

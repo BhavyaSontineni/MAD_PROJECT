@@ -7,7 +7,7 @@ import 'grocery_list_screen.dart'; // Import the new grocery list screen
  class HomePage extends StatefulWidget {
    final String userId;
  
-   HomePage({required this.userId});
+   const HomePage({super.key, required this.userId});
  
    @override
    _HomePageState createState() => _HomePageState();
@@ -33,10 +33,10 @@ import 'grocery_list_screen.dart'; // Import the new grocery list screen
          children: [
            Container(
              height: 50, // Height of the marquee container
-             color: Color(0xFFAF7AC5), // Background color of the marquee
+             color: const Color(0xFFAF7AC5), // Background color of the marquee
              child: Marquee(
                text: messages.join('   |   '), // Join messages for scrolling
-               style: TextStyle(
+               style: const TextStyle(
                  fontSize: 18,
                  color: Colors.white,
                  fontWeight: FontWeight.bold, 
@@ -46,20 +46,32 @@ import 'grocery_list_screen.dart'; // Import the new grocery list screen
                blankSpace: 20.0,
                velocity: 50.0,
                startPadding: 10.0,
-               accelerationDuration: Duration(seconds: 1),
+               accelerationDuration: const Duration(seconds: 1),
                accelerationCurve: Curves.linear,
-               decelerationDuration: Duration(milliseconds: 500),
+               decelerationDuration: const Duration(milliseconds: 500),
                decelerationCurve: Curves.easeOut,
              ),
            ),
-           SizedBox(height: 20), 
+           const SizedBox(height: 20), 
            Expanded(
              child: PageView(
-               children: [
-                 Center(child: Text("Explore Your Home", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
-                 Center(child: Text("Cook with the Best Recipes", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
-                 Center(child: Text("Plan Your Meals with Ease", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
-                 Center(child: Text("Manage Your Grocery List Smartly", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
+               children: const [
+                 Center(
+                     child: Text("Explore Your Home",
+                         style: TextStyle(
+                             fontSize: 24, fontWeight: FontWeight.bold))),
+                 Center(
+                     child: Text("Cook with the Best Recipes",
+                         style: TextStyle(
+                             fontSize: 24, fontWeight: FontWeight.bold))),
+                 Center(
+                     child: Text("Plan Your Meals with Ease",
+                         style: TextStyle(
+                             fontSize: 24, fontWeight: FontWeight.bold))),
+                 Center(
+                     child: Text("Manage Your Grocery List Smartly",
+                         style: TextStyle(
+                             fontSize: 24, fontWeight: FontWeight.bold))),
                ],
                // Allow users to swipe through messages
                onPageChanged: (index) {
@@ -93,12 +105,12 @@ import 'grocery_list_screen.dart'; // Import the new grocery list screen
    Widget build(BuildContext context) {
      return Scaffold(
        appBar: AppBar(
-         title: Text('Recipe and Meal planning app'),
+         title: const Text('Recipe and Meal planning app'),
          centerTitle: true,
-         backgroundColor: Color(0xFFAF7AC5),
+         backgroundColor: const Color(0xFFAF7AC5),
          actions: [
            IconButton(
-             icon: Icon(Icons.person),
+             icon: const Icon(Icons.person),
              onPressed: () {
                Navigator.push(
                  context,
@@ -135,7 +147,7 @@ import 'grocery_list_screen.dart'; // Import the new grocery list screen
          selectedItemColor: Colors.blue, // Selected item color
          unselectedItemColor: Colors.grey, // Unselected item color
          backgroundColor:
-             Color(0xFFEBDEF0), // Background color for the navigation bar
+            const Color(0xFFEBDEF0), // Background color for the navigation bar
        ),
      );
    }

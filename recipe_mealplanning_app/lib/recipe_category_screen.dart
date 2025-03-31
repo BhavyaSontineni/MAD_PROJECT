@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
  class RecipeCategoryScreen extends StatelessWidget {
    final String userId; // Accept userId as a parameter
  
-   RecipeCategoryScreen({required this.userId}); // Constructor to pass userId
+   const RecipeCategoryScreen(
+       {super.key, required this.userId}); // Constructor to pass userId
  
    @override
    Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ import 'package:flutter/material.dart';
  
    Widget _buildCategoryButton(BuildContext context, String category) {
      return Container(
-       margin: EdgeInsets.symmetric(vertical: 10), // Space between buttons
+       margin: const EdgeInsets.symmetric(vertical: 10), // Space between buttons
        width:
            MediaQuery.of(context).size.width * 0.75, // 3/4 of the screen width
        child: ElevatedButton(
@@ -46,7 +47,7 @@ import 'package:flutter/material.dart';
            );
          },
          style: ElevatedButton.styleFrom(
-           backgroundColor: Color(0xFFEBDEF0), // Button background color
+           backgroundColor: const Color(0xFFEBDEF0), // Button background color
          ),
          child: Text(category),
        ),
