@@ -4,17 +4,16 @@ import 'signup_page.dart';
 import 'home_page.dart';
 import 'profile_page.dart';
 import 'favorite_provider.dart';
- import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(
-     ChangeNotifierProvider(
-       create: (context) => FavoriteProvider(),
-       child: MyApp(),
-     ),
-   );
- }
-
+    ChangeNotifierProvider(
+      create: (context) => FavoriteProvider(),
+      child: MyApp(),
+    ),
+  );
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -26,12 +25,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/', // Defines the starting screen
+      initialRoute: '/',
       routes: {
-        '/': (context) => LoginPage(), // Home screen
+        '/': (context) => LoginPage(),
         '/signup': (context) => SignUpPage(),
-        '/home': (context) => HomePage(userId: 'testUser',),
-        '/profile': (context) => ProfilePage(userId: 'testUser',),
+        '/home': (context) => HomePage(userId: 'testUser'),
+        '/profile': (context) => ProfilePage(userId: 'testUser'),
       },
     );
   }

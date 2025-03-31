@@ -28,7 +28,7 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Recipe Nest'),
+        title: const Text('Recipe and Meal Planning App'),
         centerTitle: true,
         backgroundColor: const Color(0xFFAF7AC5),
       ),

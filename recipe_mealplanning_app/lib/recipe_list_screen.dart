@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'favorite_provider.dart';
 import 'recipe_detail_screen.dart';
 import 'favorite_recipe_screen.dart';
 
@@ -506,6 +508,8 @@ class _RecipeListScreenState extends State<RecipeListScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final favoriteProvider = Provider.of<FavoriteProvider>(context);
+
     List<Map<String, dynamic>> filteredRecipes = recipes[widget.category] ?? [];
     filteredRecipes = filteredRecipes.where((recipe) {
       if (selectedDietaryOption == 'All') return true;
@@ -538,8 +542,8 @@ class _RecipeListScreenState extends State<RecipeListScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => 
-                      FavoriteRecipesScreen(favorites: favorites),
+                  builder: (context) => FavoriteRecipesScreen(
+                      favorites: favoriteProvider.favorites),
                 ),
               );
             },
@@ -547,43 +551,43 @@ class _RecipeListScreenState extends State<RecipeListScreen> {
         ],
       ),
       body: ListView.builder(
-         itemCount: filteredRecipes.length,
-         itemBuilder: (context, index) {
-           final recipe = filteredRecipes[index];
-           return Card(
-             child: ListTile(
-               leading: Image.asset(recipe['image']),
-               title: Text(recipe['name']),
-               subtitle: Text(
-                   '${recipe['calories']} calories - ${recipe['prepTime']}'),
-               trailing: IconButton(
-                 icon: Icon(
-                   recipe['isFavorite'] ? Icons.favorite : Icons.favorite_border,
-                   color: recipe['isFavorite'] ? Colors.red : null,
-                 ),
-                 onPressed: () {
-                   setState(() {
-                     recipe['isFavorite'] = !recipe['isFavorite'];
-                     if (recipe['isFavorite']) {
-                       favorites.add(recipe);
-                     } else {
-                       favorites.remove(recipe);
-                     }
-                   });
-                 },
-               ),
-               onTap: () {
-                 Navigator.push(
-                   context,
-                   MaterialPageRoute(
-                     builder: (context) => RecipeDetailScreen(recipe: recipe),
-                   ),
-                 );
-               },
-             ),
-           );
-         },
-       ),
-     );
-   }
- }
+        itemCount: filteredRecipes.length,
+        itemBuilder: (context, index) {
+          final recipe = filteredRecipes[index];
+          return Card(
+            child: ListTile(
+              leading: Image.asset(recipe['image']),
+              title: Text(recipe['name']),
+              subtitle: Text(
+                  '${recipe['calories']} calories - ${recipe['prepTime']}'),
+              trailing: IconButton(
+                icon: Icon(
+                  favoriteProvider.isFavorite(recipe)
+                      ? Icons.favorite
+                      : Icons.favorite_border,
+                  color:
+                      favoriteProvider.isFavorite(recipe) ? Colors.red : null,
+                ),
+                onPressed: () {
+                  if (favoriteProvider.isFavorite(recipe)) {
+                    favoriteProvider.removeFavorite(recipe);
+                  } else {
+                    favoriteProvider.addFavorite(recipe);
+                  }
+                },
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => RecipeDetailScreen(recipe: recipe),
+                  ),
+                );
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
