@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Recipe and Meal Planning App',
+      title: 'Nourish Note',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
