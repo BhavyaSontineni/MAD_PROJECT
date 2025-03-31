@@ -2,8 +2,7 @@
 
 Nourish Note is a mobile app developed with Flutter, aimed at simplifying meal planning, recipe discovery, and grocery list organization. With its clean and intuitive interface, it helps users efficiently manage their food-related tasks. The app enables users to plan meals for the week, build a personalized grocery list, and receive meal suggestions tailored to their dietary preferences. Nourish Note is an all-in-one solution for anyone seeking to streamline and organize their meal planning in one convenient platform.
 
-
-----
+---
 
 ##**Features**:
 
@@ -69,7 +68,10 @@ Nourish Note is structured with scalability in mind:
 
 ---
 
+# *USE CASE DIAGRAM:* 
+![image alt](https://github.com/BhavyaSontineni/MAD_PROJECT/blob/main/recipe_mealplanning_app/usecasediagram.jpeg)
 
+---
 
 ## **Technologies Used**
 
@@ -79,6 +81,32 @@ Nourish Note is structured with scalability in mind:
 
 - Material Design: Ensures a consistent and user-friendly UI/UX experience.
 
+  ---
+  
+
+## *Nourish Note App Overview Screenshots:*
+
+![image alt](https://github.com/BhavyaSontineni/MAD_PROJECT/blob/main/recipe_mealplanning_app/ss1.png)
+![image alt](https://github.com/BhavyaSontineni/MAD_PROJECT/blob/main/recipe_mealplanning_app/ss2.png)
+![image alt](https://github.com/BhavyaSontineni/MAD_PROJECT/blob/main/recipe_mealplanning_app/ss3.png)
+![image alt](https://github.com/BhavyaSontineni/MAD_PROJECT/blob/main/recipe_mealplanning_app/ss4.png)
+![image alt](https://github.com/BhavyaSontineni/MAD_PROJECT/blob/main/recipe_mealplanning_app/ss5.png)
+![image alt](https://github.com/BhavyaSontineni/MAD_PROJECT/blob/main/recipe_mealplanning_app/ss6.png)
+![image alt](https://github.com/BhavyaSontineni/MAD_PROJECT/blob/main/recipe_mealplanning_app/ss7.png)
+![image alt](https://github.com/BhavyaSontineni/MAD_PROJECT/blob/main/recipe_mealplanning_app/ss8.png)
+![image alt](https://github.com/BhavyaSontineni/MAD_PROJECT/blob/main/recipe_mealplanning_app/ss9.png)
+![image alt](https://github.com/BhavyaSontineni/MAD_PROJECT/blob/main/recipe_mealplanning_app/ss10.png)
+
+----
+
+## **Potential Enhancements**
+
+In future versions, Nourish Note could include:
+
+- **API Integration**: Fetch real-time recipes and grocery lists from online sources.
+- **Persistent Data Storage**: Using SQLite or Firebase for data that persists across sessions.
+- **Notifications**: Reminders for meal planning and grocery shopping.
+- **Advanced Filtering**: More dietary options and other filtering features to further personalize user experience.
 
 ---
 
