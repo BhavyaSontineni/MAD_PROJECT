@@ -3,9 +3,10 @@
 Nourish Note is a mobile app developed with Flutter, aimed at simplifying meal planning, recipe discovery, and grocery list organization. With its clean and intuitive interface, it helps users efficiently manage their food-related tasks. The app enables users to plan meals for the week, build a personalized grocery list, and receive meal suggestions tailored to their dietary preferences. Nourish Note is an all-in-one solution for anyone seeking to streamline and organize their meal planning in one convenient platform.
 
 ---
-## Presentation
+## Presentation and demo links
 For a detailed overview, check out the [Nourish Note Presentation](https://github.com/BhavyaSontineni/MAD_PROJECT/blob/main/recipe_mealplanning_app/Nourish_Note_PPT.pptx).
-
+For project demo, check out(https://youtu.be/FK5Oswlq5ho)
+For project explanation, check out(https://youtu.be/nkLDHJpkr1Y)
 ---
 
 ##**Features**:
